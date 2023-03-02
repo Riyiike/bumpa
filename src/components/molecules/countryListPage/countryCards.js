@@ -1,17 +1,21 @@
-import React, { memo } from "react";
+import React, { memo,useContext } from "react";
 import CountryNames from "./countryNames";
 import {Link} from "react-router-dom"
 import baseUrl from "../../../utils/route/baseUrl";
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import { Skeleton } from "@mui/material";
+import FilterDataContext from "../../../contexts/filterDataContext";
+import numberWithCommas from "../../../utils/methods/numberWithCommas";
 
 function CountryCards(props) {
   const { country } = props;
-
+  const { user } = useContext(FilterDataContext);
   const countryName = country.name.common.replace(/\s+/g, "_").toLowerCase();
 
   const infos = [
     {
       label: "population",
-      value: country.population,
+      value: numberWithCommas(country.population),
     },
     {
       label: "region",
@@ -25,32 +29,42 @@ function CountryCards(props) {
 
   return (
     <div
-      className="max-w-xs w-full bg-White dark:bg-DarkBlue overflow-hidden rounded-md 
-    capitalize drop-shadow-xl shadow-DarkBlue"
+      className={`max-w-xs w-full relative bg-White  dark:bg-DarkBlue 
+      overflow-hidden rounded-md capitalize drop-shadow-xl shadow-DarkBlue`}
     >
-      <div className="h-[12rem] relative">
+      {/* clickable country element */}
       <Link to={`${baseUrl}${countryName}`} className={`w-full`}>
+        <div className="h-[12rem] relative">
+          <LazyLoadImage
+            className="h-full w-full absolute object-cover object-center"
+            src={country.flags.svg}
+            placeholder={
+              <Skeleton
+                height="100%"
+                sx={{ transform: "scale(1)" }}
+                animation="wave"
+              />
+            }
+            alt="country flag"
+          />
+        </div>
+        <div className="p-6">
+          <CountryNames country={country} />
+          {infos.map((inf, infoIdx) => {
+            return (
+              <div key={infoIdx} className="flex gap-2">
+                <span className="dark:text-White">
+                  {inf.label} :
+                  <span className="dark:text-VeryLightGray font-light ml-1">
+                    {inf.value}
+                  </span>
+                </span>
+              </div>
+            );
+          })}
+        </div>
+      </Link>
 
-        <img
-          className="h-full w-full absolute object-cover object-center"
-          src={country.flags.svg}
-          alt="country flag"
-        />
-        </Link>
-      </div>
-      <div className="p-6">
-        <CountryNames country={country} />
-        {infos.map((inf, infoIdx) => {
-          return (
-            <div key={infoIdx} className="flex gap-2">
-              <span className="dark:text-White">{inf.label} : </span>
-              <span className="dark:text-VeryLightGray font-light">
-                {inf.value}
-              </span>
-            </div>
-          );
-        })}
-      </div>
     </div>
   );
 }
