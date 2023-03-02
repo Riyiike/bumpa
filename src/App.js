@@ -9,6 +9,18 @@ import CountryCards from "./components/molecules/countryListPage/countryCards";
 function App() {
   const [darkTheme, setDarkTheme] = useState(true);
   const [countries, setCountries] = useState();
+  const [regionIndex, setRegionIndex] = useState();
+  const [searchFilter, setSearchFilter] = useState("");
+  const dropDownContent = ["Africa", "Americas", "Asia", "Europe", "Oceania"];
+
+  // data states for filtering the countries
+  const filterData = {
+    regionIndex,
+    setRegionIndex,
+    dropDownContent,
+    searchFilter,
+    setSearchFilter,
+  };
 
   // nav bar data
   const navBarObject = {
@@ -37,7 +49,9 @@ function App() {
       <NavBarContext.Provider value={navBarObject}>
         <NavBar />
       </NavBarContext.Provider>
-      <Outlet context={[countries]} />
+      <FilterDataContext.Provider value={filterData}>
+        <Outlet context={[countries]} />
+      </FilterDataContext.Provider>
     </main>
   );
 }

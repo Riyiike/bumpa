@@ -4,8 +4,6 @@ const CountryNames  =(props)=>{
     const { searchFilter, country } = props;
 
     function NamePieces(str, match) {
-    //   str = str.toLowerCase();
-    //   match = match.toLowerCase();
       var pieces = [];
       var index,
         pos = 0;

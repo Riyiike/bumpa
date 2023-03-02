@@ -1,12 +1,8 @@
-import React, { memo, useContext } from "react";
-import { Link } from "react-router-dom";
-import baseUrl from "../../../utils/route/baseUrl";
+import React, { memo } from "react";
 import CountryNames from "./countryNames";
-import FilterDataContext from "../../../contexts/filterDataContext";
 
 function CountryCards(props) {
   const { country } = props;
-//   const { searchFilter } = useContext(FilterDataContext);
 
   const infos = [
     {
