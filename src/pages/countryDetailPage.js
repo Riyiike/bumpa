@@ -1,17 +1,14 @@
 import React,{useState,useEffect} from "react";
 import { useLoaderData, useOutletContext } from "react-router-dom";
-import BorderCountries from "../../components/molecules/countrDetailPage/borderCountries";
-import backIcon from "../../assets/backIcon.svg"
-import Loading from "../../components/molecules/countrDetailPage/Loading";
-import { LazyLoadImage } from "react-lazy-load-image-component";
-import getCountryDataInfo from "../../utils/data/getCountryData";
-import { Skeleton } from "@mui/material";
-import { labels1 } from "../../utils/methods/infoLabels";
-import { labels2 } from "../../utils/methods/infoLabels";
-import BackBtn from "../../components/atoms/backButton";
-import CountryImage from "../../components/molecules/countrDetailPage/countryImage";
-import CountryInfo from "../../components/molecules/countrDetailPage/countryData";
-import CountryTitle from "../../components/molecules/countrDetailPage/countryTitle";
+import BorderCountries from "../components/molecules/countryDetailPage/borderCountries";
+import getCountryDataInfo from "../utils/api/getCountryData";
+import Loading from "../components/molecules/countryDetailPage/Loading"
+import { labels1 } from "../utils/methods/infoLabels";
+import { labels2 } from "../utils/methods/infoLabels";
+import BackBtn from "../components/atoms/backButton";
+import CountryImage from "../components/molecules/countryDetailPage/countryImage"
+import CountryInfo from "./../components/molecules/countryDetailPage/countryData"
+import CountryTitle from "../components/molecules/countryDetailPage/countryTitle";
 
 
 
