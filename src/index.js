@@ -12,7 +12,7 @@ import baseUrl from "./utils/route/baseUrl";
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: baseUrl,
     element: <App />,
     errorElement: <ErrorPage />,
 

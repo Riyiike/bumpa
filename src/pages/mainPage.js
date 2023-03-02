@@ -1,9 +1,13 @@
-import React, { useEffect, useContext } from "react";
+import React, { useEffect,lazy, useContext,Suspense } from "react";
 import { useOutletContext, useSearchParams } from "react-router-dom";
-import AllCountries from "../components/molecules/countryListPage/allCountries";
 import SearchInput from "../components/organisms/searchInput";
 import DropDown from "../components/organisms/dropDown";
+import MainSuspenceLoading from "../components/molecules/countryListPage/mainSuspenseLoading";
 import FilterDataContext from "../contexts/filterDataContext";
+
+
+const AllCountries = lazy(() => import("../components/molecules/countryListPage/allCountries"));
+
 
 const MainPage = () => {
   const [countries] = useOutletContext();
@@ -25,12 +29,14 @@ const MainPage = () => {
 
   return (
     <div className="pt-8 px-5 max-w-7xl mx-auto">
-      <div className="sm:flex justify-between mb-5 items-center">
-        <SearchInput />
-        <DropDown />
-      </div>
-      {countries ? <AllCountries countriesList={countries} /> : ""}
+    <div className="sm:flex justify-between mb-5 items-center">
+      <SearchInput />
+      <DropDown />
     </div>
+    <Suspense fallback={<MainSuspenceLoading />}>
+      {countries ? <AllCountries countriesList={countries} /> : ""}
+    </Suspense>
+  </div>
   );
 };
 
