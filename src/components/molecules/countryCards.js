@@ -1,15 +1,13 @@
-import React, { memo,useContext } from "react";
+import React, { memo } from "react";
 import CountryNames from "./countryNames";
 import {Link} from "react-router-dom"
-import baseUrl from "../../../utils/route/baseUrl";
+import baseUrl from "../../utils/route/baseUrl";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import { Skeleton } from "@mui/material";
-import FilterDataContext from "../../../contexts/filterDataContext";
-import numberWithCommas from "../../../utils/methods/numberWithCommas";
+import numberWithCommas from "../../utils/methods/numberWithCommas";
 
 function CountryCards(props) {
   const { country } = props;
-  const { user } = useContext(FilterDataContext);
   const countryName = country.name.common.replace(/\s+/g, "_").toLowerCase();
 
   const infos = [

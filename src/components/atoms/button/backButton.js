@@ -1,13 +1,13 @@
 import React, { useState } from "react";
-import backIcon from "../../assets/backIcon.svg"
+import backIcon from "../../../assets/backIcon.svg"
 import { useLocation, useNavigate } from "react-router-dom";
-import baseUrl from "../../utils/route/baseUrl";
+import baseUrl from "../../../utils/route/baseUrl";
 const BackBtn = (props) => {
   const { setIsLoading } = props;
   const location = useLocation();
   const [firstPath] = useState(location.pathname);
   const navigate = useNavigate();
-  const isFirstPage = firstPath == location.pathname;
+  const isFirstPage = firstPath === location.pathname;
 
   function BackPage() {
     window.scrollTo(0, 0);

@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`test mainPage test mainPage 1`] = `
+<h2
+  className="font-bold text-lg sm:text-2xl mb-4 lg:mb-5 sm:col-span-2 flex items-center gap-2 sm:gap-3"
+/>
+`;

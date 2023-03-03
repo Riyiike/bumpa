@@ -1,37 +1,36 @@
 import React, { useContext, useState, useEffect } from "react";
-import CountryCards from "./countryCards";
-import FilterDataContext from "../../../contexts/filterDataContext";
-import countriesFilter from "../../../utils/methods/countryFilter";
-import loadCountries from "../../../utils/methods/loadCountries";
+import FilterDataContext from "../../contexts/filterDataContext";
+import countriesFilter from "../../utils/methods/countryFilter";
+import loadCountries from "../../utils/methods/loadCountries";
 import { nanoid } from "nanoid";
-import ShowCountry from "../../../utils/methods/showCountry";
+import ShowCountry from "../../utils/methods/showCountry";
 import InfiniteScroll from "react-infinite-scroller";
-import Loading from "./loading";
+import Loading from "../../utils/api/loading";
 
 
 
 const AllCountries = (props) => {
+  const itemsPerPage = 20;
+
   const { countriesList } = props;
   const { searchFilter, regionIndex, dropDownContent } =
     useContext(FilterDataContext);
   const [filteredCountryList, setFilteredCountryList] = useState(countriesList);
-  const itemsPerPage = 20;
   const [infiniteScrollList, setInfiniteScrollList] = useState(
     filteredCountryList.slice(0, itemsPerPage)
   );
   const [hasMore, setHasMore] = useState(true); // if there is more countries to show in infinite scroll
 
   useEffect(() => {
-    setHasMore(true);
     setFilteredCountryList(() =>
       countriesFilter(countriesList, regionIndex, dropDownContent, searchFilter)
     );
-  }, [searchFilter, regionIndex]);
+  }, [searchFilter, regionIndex, countriesList, dropDownContent]);
 
   useEffect(() => {
-    if (filteredCountryList.length > itemsPerPage)
+    if (filteredCountryList.length > itemsPerPage) {
       setInfiniteScrollList(filteredCountryList.slice(0, itemsPerPage));
-    else {
+    } else {
       setInfiniteScrollList(filteredCountryList);
     }
   }, [filteredCountryList]);
@@ -48,7 +47,7 @@ const AllCountries = (props) => {
   }
 
   return (
-    // The prrpose of implementig this infinite scroll is to optimize user experience while viewing all the countries
+    // The purpose of implementig this infinite scroll is to optimize user experience while viewing all the countries
     <InfiniteScroll
       pageStart={0}
       loadMore={countriesLoader}

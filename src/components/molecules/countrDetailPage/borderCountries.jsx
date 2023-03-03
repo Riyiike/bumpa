@@ -1,13 +1,13 @@
+import baseUrl from "../../../utils/data/baseUrl"
 import React from "react";
 import { Link } from "react-router-dom";
-import baseUrl from "../../../utils/route/baseUrl";
 
 const BorderCountries =(props)=> {
   const { countries, borderSigns } = props;
   const neighbours = borderSigns
     ? borderSigns.map((sign) => {
         for (let i = 0; i < countries.length; i++) {
-          if (countries[i].cca3 == sign)
+          if (countries[i].cca3 === sign)
             return {
               name: countries[i].name.common,
               linkName: countries[i].name.common

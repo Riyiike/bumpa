@@ -1,7 +1,7 @@
-import FilterDataContext from "../../contexts/filterDataContext";
+// import FilterDataContext from "../../contexts/filterDataContext";
 import { nanoid } from "nanoid";
-import React, { lazy, useContext } from "react";
-const CountryCards = lazy(() => import("../../components/molecules/countryListPage/countryCards"));
+import React, { lazy } from "react";
+const CountryCards = lazy(() => import("../../components/molecules/countryCards"));
 
 // gets the list of elements to show
 export default function ShowCountry(props) {

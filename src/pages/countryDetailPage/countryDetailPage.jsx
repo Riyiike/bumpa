@@ -1,14 +1,14 @@
-import React,{useState,useEffect, useCallback} from "react";
+import React,{useState,useEffect} from "react";
 import { useLoaderData, useOutletContext } from "react-router-dom";
-import BorderCountries from "../components/molecules/borderCountries";
-import getCountryDataInfo from "../utils/api/getCountryData";
-import Loading from "../utils/api/loading"
-import { labels1 } from "../utils/methods/infoLabels";
-import { labels2 } from "../utils/methods/infoLabels";
-import BackBtn from "../components/atoms/button/backButton";
-import CountryImage from "../components/molecules/countryImage"
-import CountryInfo from "../components/molecules/countryData"
-import CountryTitle from "../components/molecules/countryTitle";
+import BorderCountries from "../../components/molecules/countrDetailPage/borderCountries";
+import Loading from "../../components/molecules/countrDetailPage/Loading";
+import getCountryDataInfo from "../../utils/data/getCountryData";
+import { labels1 } from "../../utils/methods/infoLabels";
+import { labels2 } from "../../utils/methods/infoLabels";
+import BackBtn from "../../components/atoms/backButton";
+import CountryImage from "../../components/molecules/countrDetailPage/countryImage";
+import CountryInfo from "../../components/molecules/countrDetailPage/countryData";
+import CountryTitle from "../../components/molecules/countrDetailPage/countryTitle";
 
 
 
@@ -23,21 +23,21 @@ const CountryDetailPage = () => {
     let countryData = getCountryDataInfo(country);
     const [isLoading, setIsLoading] = useState(false);
   
-    const getCountryData = useCallback(() => {
+    function getCountryData() {
       for (let i = 0; i < countries.length; i++) {
         if (countries[i].name.common.toLowerCase() === countryName)
           setCountry(countries[i]);
       }
-    }, [countries, countryName])
+    }
   
     useEffect(() => {
       if (countries != null && country == null) getCountryData();
-    }, [countries, country, getCountryData]);
+    }, [countries]);
   
     useEffect(() => {
       if (countries != null) getCountryData();
       setIsLoading(false);
-    }, [countryName, getCountryData, countries]);
+    }, [countryName]);
   
     window.scrollTo(0, 0);
   

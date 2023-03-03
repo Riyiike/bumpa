@@ -1,4 +1,4 @@
-import React, { useRef, useState,useContext } from "react";
+import React, { useState,useContext } from "react";
 import FilterDataContext from "../../contexts/filterDataContext";
 import { useSearchParams } from "react-router-dom";
 
@@ -18,7 +18,7 @@ function dropDownToggle() {
 // region change handler
 function regionFilter(index) {
   setRegionIndex((oldValue) => {
-    const isActive = oldValue == index;
+    const isActive = oldValue === index;
     setSearchParams((prev) => {
       if (isActive) prev.delete("region");
       else prev.set("region", index);
@@ -69,7 +69,7 @@ return (
       >
         {dropDownContent.map((dropText, index) => {
           const activeStyle =
-            regionIndex == index
+            regionIndex === index
               ? "bg-DarkGray bg-opacity-10 dark:bg-DarkGray dark:bg-opacity-20"
               : "";
 

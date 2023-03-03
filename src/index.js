@@ -5,7 +5,7 @@ import App from "./App";
 import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import MainPage from "./pages/mainPage";
-import ErrorPage from "./pages/errorPage/errorPage";
+import ErrorPage from "./pages/errorPage";
 import CountryDetailPage,{CountryDetailPageLoader} from "./pages/countryDetailPage"
 import baseUrl from "./utils/route/baseUrl";
 

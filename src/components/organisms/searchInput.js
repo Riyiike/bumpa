@@ -1,5 +1,5 @@
 import FilterDataContext from "../../contexts/filterDataContext";
-import React, { memo, useContext, useEffect, useRef } from "react";
+import React, { useContext, useEffect, useRef } from "react";
 import { useSearchParams } from "react-router-dom";
 
 function SearchInput() {
@@ -11,7 +11,7 @@ function SearchInput() {
     if (searchFilter) {
       searchBar.current.value = searchFilter;
     }
-  }, []);
+  }, [searchFilter]);
 
   // input change handler
   function searchHandle(e) {

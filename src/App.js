@@ -4,7 +4,7 @@ import NavBarContext from "./contexts/NavBarContext";
 import axios from "axios";
 import { Outlet } from "react-router-dom";
 import FilterDataContext from "./contexts/filterDataContext";
-import CountryCards from "./components/molecules/countryListPage/countryCards";
+import CountryCards from "./components/molecules/countryCards";
 
 function App() {
   const [darkTheme, setDarkTheme] = useState(true);
