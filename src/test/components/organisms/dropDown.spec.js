@@ -8,11 +8,8 @@ jest.mock('react-router-dom', () => ({
 
 }))
 
-
-
-
-describe('test mainPage', () => {
-    it('test mainPage', () => {
+describe('test dropDown', () => {
+    it('test dropDown', () => {
         const btn = shallow(<DropDown />)
         expect(btn).toMatchSnapshot();
     })
