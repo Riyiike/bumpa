@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`test button test back button 1`] = `
+<button
+  className="bg-White dark:bg-DarkBlue p-[.3em] px-[1.2em] rounded-sm mb-9 flex gap-2  items-center text-sm drop-shadow-md "
+  onClick={[Function]}
+>
+  <img
+    alt="back button"
+    className="dark:invert"
+    src="backIcon.svg"
+  />
+  Back
+</button>
+`;

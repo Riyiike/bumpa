@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`test mainPage test mainPage 1`] = `
+<div
+  className="pt-8 px-5 max-w-7xl mx-auto"
+>
+  <div
+    className="sm:flex justify-between mb-5 items-center"
+  >
+    <SearchInput />
+    <DropDown />
+  </div>
+  <Suspense
+    fallback={<MainSuspenceLoading />}
+  />
+</div>
+`;
